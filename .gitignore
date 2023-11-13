@@ -10,6 +10,14 @@ don_pj/[Bb]uilds/
 don_pj/[Ll]ogs/
 don_pj/[Uu]ser[Ss]ettings/
 
+Food_11/[Ll]ibrary/
+Food_11/[Tt]emp/
+Food_11/[Oo]bj/
+Food_11/[Bb]uild/
+Food_11/[Bb]uilds/
+Food_11/[Ll]ogs/
+Food_11/[Uu]ser[Ss]ettings/
+
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
