@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     {
         rigid = transform.GetComponent<Rigidbody2D>();
         sd = GetComponent<SpriteRenderer>();
+        StartCoroutine("JumpCo");
     }
 
 
@@ -95,6 +96,7 @@ public class Player : MonoBehaviour
             //sd.flipX = false;
         }
 
+        
         //if(Input.GetKeyDown(KeyCode.LeftArrow))
         //{
         //    transform.Rotate(0, 180, 1);
@@ -103,9 +105,8 @@ public class Player : MonoBehaviour
         //{
         //    transform.Rotate(0, 0, 0);
         //}
-        //StartCoroutine(JumpCo());
-        GameManager.Instance.Food();
     }
+        //StartCoroutine(JumpCo());
     //그냥 2단 점프
 
     //코루틴을 이용해서 2단점프
@@ -113,14 +114,14 @@ public class Player : MonoBehaviour
     {
         //일단 실행
         //GameManager.Instance.Food();
-            yield return new WaitForSeconds(2.0f);
-        //while(true)
+        while(true)
         {
-
-            
+            GameManager.Instance.Food();
+            yield return new WaitForSeconds(1.0f);
         }
         //n초후 실행
     }
+
     //어디한쪽이라도 트리거 체크되어 있으면 무조건 트리거 함수가 불림
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -130,11 +131,7 @@ public class Player : MonoBehaviour
             Destroy(collision.gameObject);//나랑 부딪힌 친구 객체 삭제
         }
 
-        if (collision.CompareTag("Ground"))
-        {
-            //GameManager.Instance.AddScore();
-            Destroy(collision.gameObject);//나랑 부딪힌 친구 객체 삭제
-        }
+        
     }
     //private void OnTriggerExit2D(Collider2D collision)
     //{

@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-   
-   public static GameManager Instance = null;
+    private static GameManager instance = null;
+    public static GameManager Instance => instance;
    void Awake()
    {
-       if (Instance == null)
+       if (instance == null)
        {
-           Instance = this;
+            instance = this;
            DontDestroyOnLoad(this.gameObject);
        }
        else
        {
-           if (Instance != this)
+           if (instance != this)
            {
                Destroy(this.gameObject);
            }
@@ -32,7 +32,10 @@ public class GameManager : MonoBehaviour
     public void Food()
     {
         GameObject obj = Instantiate(foodPrefab);
-        obj.transform.position = new Vector3(0, 10, 0);
+        int Xval = Random.Range(-8, 9);
+
+        obj.transform.position = new Vector3(Xval, 10, 0);
+        //obj.AddComponent<SpriteRenderer>().color = new Color(255, 255, 2, 2);
     }
 
     public void AddScore()
@@ -40,4 +43,12 @@ public class GameManager : MonoBehaviour
         score++;
         scoreText.text = "Á¡¼ö : " + score;
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Destroy(collision.gameObject);
+        Debug.Log("cc");
+    }
+    
+
+
 }
