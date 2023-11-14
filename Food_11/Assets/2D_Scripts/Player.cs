@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
     {
         rigid = transform.GetComponent<Rigidbody2D>();
         sd = GetComponent<SpriteRenderer>();
-        StartCoroutine("JumpCo");
+        StartCoroutine(JumpCo());
     }
 
 
