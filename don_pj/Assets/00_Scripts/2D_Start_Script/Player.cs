@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     float speed = 5;    
     Rigidbody2D rigid;
     int jumpCount = 0;
-    bool dirRight = true;
     Vector3 vec = Vector3.zero; //vec == 0,0,0
     Vector3 scaleVec = Vector3.one;
     SpriteRenderer sprend;
@@ -163,8 +162,4 @@ public class Player : MonoBehaviour
     //    Debug.Log("그냥 콜리젼 접촉 중");
     //}
 
-    public void Test() //Hit 도중에 불릴 테스트함수
-    {
-        Debug.Log("sssss");
-    }
 }
