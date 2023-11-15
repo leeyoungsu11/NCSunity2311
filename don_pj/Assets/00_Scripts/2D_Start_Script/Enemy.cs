@@ -2,23 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IHit
 {
     public Transform[] posRange;
     float x = 0;
     float y = 0;
     float speed = 3;
     float Direction = 1;
+    Rigidbody2D rigid;
+
     Vector3 vec = Vector3.zero;
     Vector3 scaleVec = Vector3.one;
     Animator animator;
-
+    public Constructure.Stat stat;
     public Slider slider;
 
     void Start()
     {
+        rigid = GetComponent<Rigidbody2D>();
+        stat = new Constructure.Stat(100, 10);
         animator = transform.GetComponent<Animator>();
         StartCoroutine(SetDirection());
+
+        slider.maxValue = stat.MaxHp;
+        slider.value = stat.Hp;
     }
 
 
@@ -58,6 +65,8 @@ public class Enemy : MonoBehaviour
         {
             slider.transform.localScale = new Vector3(-1, 1, 1);
         }
+
+        //Debug.Log(stat.Att);
     }
 
     IEnumerator SetDirection()
@@ -81,18 +90,21 @@ public class Enemy : MonoBehaviour
 
         }
     }
-    float Hp = 1;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    public void Hit(float damage, Vector3 dir)
     {
-        if(collision.gameObject.CompareTag("Player"))
+        if (stat.Hp <= 0)
         {
-            Debug.Log("?");
-            if (transform.position.y + transform.localScale.y / 2 <= collision.gameObject.transform.position.y)
-            {
-                Hp -= 0.1f;
-                slider.value = Hp;
-                animator.SetTrigger("Hit");
-            }
+            return;
         }
+
+        this.stat.Hp = Mathf.Clamp(this.stat.Hp - damage, 0, this.stat.MaxHp);
+        slider.value = this.stat.Hp;
+        animator.SetTrigger("Hit");
+        rigid.AddForce(dir, ForceMode2D.Impulse);
+    }
+    public float GetAtt()
+    {
+        return stat.Att;
     }
 }

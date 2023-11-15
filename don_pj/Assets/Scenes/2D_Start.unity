@@ -839,7 +839,6 @@ GameObject:
   m_Component:
   - component: {fileID: 892744934}
   - component: {fileID: 892744933}
-  - component: {fileID: 892744935}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -886,28 +885,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &892744935
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 892744932}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ae92a53e7a3ac4ea5741f7126186cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  posRange:
-  - {fileID: 418377502}
-  - {fileID: 1511966767}
-  AllItemSprites:
-  - {fileID: -2322180950842035098, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: -4893972260818282012, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: -6323751108524238166, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: 2722280177590742205, guid: 274d64617113287499ed1c4165d1d8f3, type: 3}
-  - {fileID: 8596640243658272642, guid: 5d4daff38e3d9174b873918abcf2c1d4, type: 3}
-  CoinPrefab: {fileID: 4298967602448654890, guid: 54d67c311cfe13f43bc6629d1d9a4c8c, type: 3}
 --- !u!1 &914750965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1976,7 +1953,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887811710}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c40075b1f32ef874c82f3fa33262dbb7, type: 3}
   m_Name: 
@@ -2033,6 +2010,7 @@ GameObject:
   - component: {fileID: 1997056868}
   - component: {fileID: 1997056866}
   - component: {fileID: 1997056870}
+  - component: {fileID: 1997056871}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2171,6 +2149,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1997056871
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997056865}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1 &2015341714
 GameObject:
   m_ObjectHideFlags: 0
