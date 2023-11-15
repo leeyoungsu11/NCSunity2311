@@ -92,6 +92,7 @@ public class Player : MonoBehaviour, IHit
         animator.SetTrigger("Hit");
         this.stat.Hp = Mathf.Clamp(this.stat.Hp - damage, 0, this.stat.MaxHp);
         rigid.AddForce(dir, ForceMode2D.Impulse);
+        Debug.Log(dir);
     }
 
     public float GetAtt()
@@ -113,6 +114,7 @@ public class Player : MonoBehaviour, IHit
 
             direction *= power;
             //rigid.AddForce(direction, ForceMode2D.Impulse);
+            //Debug.Log(direction);
             Hit(10, direction);
             slider.value = stat.Hp;
             onHit = true;
