@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Ground
   - food
+  - Spike
+  - Item
+  - Enemy
   layers:
   - Default
   - TransparentFX

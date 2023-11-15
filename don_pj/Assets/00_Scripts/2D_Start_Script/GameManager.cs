@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Text scoreText; //점수 출력용
     public GameObject foodPrefab; //푸드 원본...
     public Sprite[] AllItemSprites;//푸드의 그림이 되어줄 친구들
+    
     //public Queue<GameObject> gameObjects;
 
     float generateTime=0;
