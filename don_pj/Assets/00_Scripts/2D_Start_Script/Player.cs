@@ -33,6 +33,11 @@ public class Player : MonoBehaviour, IHit
 
     void Update() 
     {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            onHit = true;
+            rigid.AddForce(new Vector3(-4, 8, 0), ForceMode2D.Impulse);
+        }
         if (onHit == true)
         {
             return;
@@ -77,10 +82,7 @@ public class Player : MonoBehaviour, IHit
             animator.SetTrigger("Jump");
             //animator.SetTrigger("Jump2");
         }
-        if(Input.GetKeyDown(KeyCode.A))
-        {
-            rigid.AddForce(new Vector3(-4,8,0) , ForceMode2D.Impulse);
-        }
+        
     }
 
     public void Hit(float damage, Vector3 dir)
@@ -106,6 +108,7 @@ public class Player : MonoBehaviour, IHit
 
         if (collision.gameObject.CompareTag("Spike"))
         {
+            onHit = true;
             direction = (transform.position - collision.transform.position).normalized;
             if(direction.y < 2)
             {
@@ -117,13 +120,13 @@ public class Player : MonoBehaviour, IHit
             //Debug.Log(direction);
             Hit(10, direction);
             slider.value = stat.Hp;
-            onHit = true;
+            
         }
 
         else if (collision.gameObject.CompareTag("Ground"))
         {
-            jumpCount = 0;
             onHit = false;
+            jumpCount = 0;
         }
         else if (collision.gameObject.CompareTag("Enemy"))
         {
@@ -141,8 +144,8 @@ public class Player : MonoBehaviour, IHit
             }
             else //적이 나를 때림
             {
-                Debug.Log("때림");
                 onHit = true;
+                Debug.Log("때림");
                 direction = (transform.position - collision.transform.position).normalized;
                 direction.y += 2;
                 
